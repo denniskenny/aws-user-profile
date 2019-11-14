@@ -4,52 +4,62 @@ schema {
   subscription: Subscription
 }
 
+type Class {
+  classGrade: String!
+  discipline: String!
+  id: ID
+  userId: String!
+}
+
 type Mutation {
-  createProfileElement(input: CreateProfileElementInput!): ProfileElement
-  deleteProfileElement(input: DeleteProfileElementInput!): ProfileElement
-  putPost(id: ID!, title: String!): Post
-  updateProfileElement(input: UpdateProfileElementInput!): ProfileElement
-}
-
-type Post {
-  id: ID!
-  title: String!
-}
-
-type ProfileElement {
-  id: ID!
-  name: String!
-  user: String!
-  value: String!
-}
-
-type ProfileElementConnection {
-  items: [ProfileElement]
-  nextToken: String
+  createUserProfile(input: CreateUserProfileInput!): UserProfile
+  deleteUserProfile: UserProfile
+  updateUserProfile(input: UpdateUserProfileInput!): UserProfile
 }
 
 type Query {
-  getProfileElement(name: String!, user: String!): ProfileElement
-  listProfileElements(filter: TableProfileElementFilterInput, limit: Int, nextToken: String): ProfileElementConnection
-  singlePost(id: ID!): Post
+  getProfile(id: ID!): UserProfile
+  getUserProfile: UserProfile
+  listUserProfiles(filter: TableUserProfileFilterInput, limit: Int, nextToken: String): UserProfileConnection
 }
 
 type Subscription {
-  onCreateProfileElement(id: ID, name: String, user: String, value: String): ProfileElement @aws_subscribe(mutations : ["createProfileElement"])
-  onDeleteProfileElement(id: ID, name: String, user: String, value: String): ProfileElement @aws_subscribe(mutations : ["deleteProfileElement"])
-  onUpdateProfileElement(id: ID, name: String, user: String, value: String): ProfileElement @aws_subscribe(mutations : ["updateProfileElement"])
+  onCreateUserProfile(contentRecommendationFreq: String, language: String, personalDevelopmentFrequency: String, userId: String): UserProfile @aws_subscribe(mutations : ["createUserProfile"])
+  onDeleteUserProfile(contentRecommendationFreq: String, language: String, personalDevelopmentFrequency: String, userId: String): UserProfile @aws_subscribe(mutations : ["deleteUserProfile"])
+  onUpdateUserProfile(contentRecommendationFreq: String, language: String, personalDevelopmentFrequency: String, userId: String): UserProfile @aws_subscribe(mutations : ["updateUserProfile"])
 }
 
-input CreateProfileElementInput {
-  id: ID!
-  name: String!
-  user: String!
-  value: String!
+type UserAccount {
+  email: String!
+  firstName: String!
+  id: ID
+  lastName: String!
+  userId: String!
 }
 
-input DeleteProfileElementInput {
-  name: String!
-  user: String!
+type UserProfile {
+  class: [Class]
+  contentRecommendationFreq: String
+  language: String
+  personalDevelopmentFrequency: String
+  user: UserAccount
+  userId: String
+}
+
+type UserProfileConnection {
+  items: [UserProfile]
+  nextToken: String
+}
+
+input CreateUserProfileInput {
+  contentRecommendationFreq: String
+  language: String
+  personalDevelopmentFrequency: String
+  userId: String
+}
+
+input DeleteUserProfileInput {
+  userId: String
 }
 
 input TableBooleanFilterInput {
@@ -94,13 +104,6 @@ input TableIntFilterInput {
   notContains: Int
 }
 
-input TableProfileElementFilterInput {
-  id: TableIDFilterInput
-  name: TableStringFilterInput
-  user: TableStringFilterInput
-  value: TableStringFilterInput
-}
-
 input TableStringFilterInput {
   beginsWith: String
   between: [String]
@@ -114,9 +117,16 @@ input TableStringFilterInput {
   notContains: String
 }
 
-input UpdateProfileElementInput {
-  id: ID
-  name: String!
-  user: String!
-  value: String
+input TableUserProfileFilterInput {
+  contentRecommendationFreq: TableStringFilterInput
+  language: TableStringFilterInput
+  personalDevelopmentFrequency: TableStringFilterInput
+  userId: TableStringFilterInput
+}
+
+input UpdateUserProfileInput {
+  contentRecommendationFreq: String
+  language: String
+  personalDevelopmentFrequency: String
+  userId: String
 }

@@ -7,19 +7,14 @@
 }
 
 .App-logo {
-  height: 10vmin;
-  margin: 0 0 0 1 rem;
+  height:3em;
 }
 
-.App-header {
-
-  /*  
-  min-height: 100vh;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  */
+.Welcome {
+  width:13em;
 }
 
-.App-link {
-  color: #09d3ac;
+.formgroup{
+  margin-bottom: 1em !important;
 }
+

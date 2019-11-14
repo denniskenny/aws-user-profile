@@ -17,7 +17,7 @@
                     "description": null,
                     "fields": [
                         {
-                            "name": "singlePost",
+                            "name": "getProfile",
                             "description": null,
                             "args": [
                                 {
@@ -37,55 +37,26 @@
                             ],
                             "type": {
                                 "kind": "OBJECT",
-                                "name": "Post",
+                                "name": "UserProfile",
                                 "ofType": null
                             },
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
-                            "name": "getProfileElement",
+                            "name": "getUserProfile",
                             "description": null,
-                            "args": [
-                                {
-                                    "name": "user",
-                                    "description": null,
-                                    "type": {
-                                        "kind": "NON_NULL",
-                                        "name": null,
-                                        "ofType": {
-                                            "kind": "SCALAR",
-                                            "name": "String",
-                                            "ofType": null
-                                        }
-                                    },
-                                    "defaultValue": null
-                                },
-                                {
-                                    "name": "name",
-                                    "description": null,
-                                    "type": {
-                                        "kind": "NON_NULL",
-                                        "name": null,
-                                        "ofType": {
-                                            "kind": "SCALAR",
-                                            "name": "String",
-                                            "ofType": null
-                                        }
-                                    },
-                                    "defaultValue": null
-                                }
-                            ],
+                            "args": [],
                             "type": {
                                 "kind": "OBJECT",
-                                "name": "ProfileElement",
+                                "name": "UserProfile",
                                 "ofType": null
                             },
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
-                            "name": "listProfileElements",
+                            "name": "listUserProfiles",
                             "description": null,
                             "args": [
                                 {
@@ -93,7 +64,7 @@
                                     "description": null,
                                     "type": {
                                         "kind": "INPUT_OBJECT",
-                                        "name": "TableProfileElementFilterInput",
+                                        "name": "TableUserProfileFilterInput",
                                         "ofType": null
                                     },
                                     "defaultValue": null
@@ -121,7 +92,7 @@
                             ],
                             "type": {
                                 "kind": "OBJECT",
-                                "name": "ProfileElementConnection",
+                                "name": "UserProfileConnection",
                                 "ofType": null
                             },
                             "isDeprecated": false,
@@ -135,19 +106,43 @@
                 },
                 {
                     "kind": "OBJECT",
-                    "name": "Post",
+                    "name": "UserProfile",
                     "description": null,
                     "fields": [
                         {
-                            "name": "id",
+                            "name": "userId",
                             "description": null,
                             "args": [],
                             "type": {
-                                "kind": "NON_NULL",
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "user",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "OBJECT",
+                                "name": "UserAccount",
+                                "ofType": null
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "class",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "LIST",
                                 "name": null,
                                 "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "ID",
+                                    "kind": "OBJECT",
+                                    "name": "Class",
                                     "ofType": null
                                 }
                             },
@@ -155,7 +150,124 @@
                             "deprecationReason": null
                         },
                         {
-                            "name": "title",
+                            "name": "contentRecommendationFreq",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "personalDevelopmentFrequency",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "language",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        }
+                    ],
+                    "inputFields": null,
+                    "interfaces": [],
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "SCALAR",
+                    "name": "String",
+                    "description": "Built-in String",
+                    "fields": null,
+                    "inputFields": null,
+                    "interfaces": null,
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "OBJECT",
+                    "name": "UserAccount",
+                    "description": null,
+                    "fields": [
+                        {
+                            "name": "id",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "userId",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "NON_NULL",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "firstName",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "NON_NULL",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "lastName",
+                            "description": null,
+                            "args": [],
+                            "type": {
+                                "kind": "NON_NULL",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
+                            },
+                            "isDeprecated": false,
+                            "deprecationReason": null
+                        },
+                        {
+                            "name": "email",
                             "description": null,
                             "args": [],
                             "type": {
@@ -187,18 +299,8 @@
                     "possibleTypes": null
                 },
                 {
-                    "kind": "SCALAR",
-                    "name": "String",
-                    "description": "Built-in String",
-                    "fields": null,
-                    "inputFields": null,
-                    "interfaces": null,
-                    "enumValues": null,
-                    "possibleTypes": null
-                },
-                {
                     "kind": "OBJECT",
-                    "name": "ProfileElement",
+                    "name": "Class",
                     "description": null,
                     "fields": [
                         {
@@ -206,19 +308,15 @@
                             "description": null,
                             "args": [],
                             "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "ID",
-                                    "ofType": null
-                                }
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
                             },
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
-                            "name": "user",
+                            "name": "userId",
                             "description": null,
                             "args": [],
                             "type": {
@@ -234,7 +332,7 @@
                             "deprecationReason": null
                         },
                         {
-                            "name": "name",
+                            "name": "classGrade",
                             "description": null,
                             "args": [],
                             "type": {
@@ -250,7 +348,7 @@
                             "deprecationReason": null
                         },
                         {
-                            "name": "value",
+                            "name": "discipline",
                             "description": null,
                             "args": [],
                             "type": {
@@ -273,7 +371,7 @@
                 },
                 {
                     "kind": "OBJECT",
-                    "name": "ProfileElementConnection",
+                    "name": "UserProfileConnection",
                     "description": null,
                     "fields": [
                         {
@@ -285,7 +383,7 @@
                                 "name": null,
                                 "ofType": {
                                     "kind": "OBJECT",
-                                    "name": "ProfileElement",
+                                    "name": "UserProfile",
                                     "ofType": null
                                 }
                             },
@@ -312,22 +410,12 @@
                 },
                 {
                     "kind": "INPUT_OBJECT",
-                    "name": "TableProfileElementFilterInput",
+                    "name": "TableUserProfileFilterInput",
                     "description": null,
                     "fields": null,
                     "inputFields": [
                         {
-                            "name": "id",
-                            "description": null,
-                            "type": {
-                                "kind": "INPUT_OBJECT",
-                                "name": "TableIDFilterInput",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "user",
+                            "name": "userId",
                             "description": null,
                             "type": {
                                 "kind": "INPUT_OBJECT",
@@ -337,7 +425,7 @@
                             "defaultValue": null
                         },
                         {
-                            "name": "name",
+                            "name": "contentRecommendationFreq",
                             "description": null,
                             "type": {
                                 "kind": "INPUT_OBJECT",
@@ -347,7 +435,7 @@
                             "defaultValue": null
                         },
                         {
-                            "name": "value",
+                            "name": "personalDevelopmentFrequency",
                             "description": null,
                             "type": {
                                 "kind": "INPUT_OBJECT",
@@ -355,118 +443,13 @@
                                 "ofType": null
                             },
                             "defaultValue": null
-                        }
-                    ],
-                    "interfaces": null,
-                    "enumValues": null,
-                    "possibleTypes": null
-                },
-                {
-                    "kind": "INPUT_OBJECT",
-                    "name": "TableIDFilterInput",
-                    "description": null,
-                    "fields": null,
-                    "inputFields": [
-                        {
-                            "name": "ne",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            },
-                            "defaultValue": null
                         },
                         {
-                            "name": "eq",
+                            "name": "language",
                             "description": null,
                             "type": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "le",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "lt",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "ge",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "gt",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "contains",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "notContains",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "ID",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "between",
-                            "description": null,
-                            "type": {
-                                "kind": "LIST",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "ID",
-                                    "ofType": null
-                                }
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "beginsWith",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "ID",
+                                "kind": "INPUT_OBJECT",
+                                "name": "TableStringFilterInput",
                                 "ofType": null
                             },
                             "defaultValue": null
@@ -607,48 +590,7 @@
                     "description": null,
                     "fields": [
                         {
-                            "name": "putPost",
-                            "description": null,
-                            "args": [
-                                {
-                                    "name": "id",
-                                    "description": null,
-                                    "type": {
-                                        "kind": "NON_NULL",
-                                        "name": null,
-                                        "ofType": {
-                                            "kind": "SCALAR",
-                                            "name": "ID",
-                                            "ofType": null
-                                        }
-                                    },
-                                    "defaultValue": null
-                                },
-                                {
-                                    "name": "title",
-                                    "description": null,
-                                    "type": {
-                                        "kind": "NON_NULL",
-                                        "name": null,
-                                        "ofType": {
-                                            "kind": "SCALAR",
-                                            "name": "String",
-                                            "ofType": null
-                                        }
-                                    },
-                                    "defaultValue": null
-                                }
-                            ],
-                            "type": {
-                                "kind": "OBJECT",
-                                "name": "Post",
-                                "ofType": null
-                            },
-                            "isDeprecated": false,
-                            "deprecationReason": null
-                        },
-                        {
-                            "name": "createProfileElement",
+                            "name": "createUserProfile",
                             "description": null,
                             "args": [
                                 {
@@ -659,7 +601,7 @@
                                         "name": null,
                                         "ofType": {
                                             "kind": "INPUT_OBJECT",
-                                            "name": "CreateProfileElementInput",
+                                            "name": "CreateUserProfileInput",
                                             "ofType": null
                                         }
                                     },
@@ -668,14 +610,14 @@
                             ],
                             "type": {
                                 "kind": "OBJECT",
-                                "name": "ProfileElement",
+                                "name": "UserProfile",
                                 "ofType": null
                             },
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
-                            "name": "updateProfileElement",
+                            "name": "updateUserProfile",
                             "description": null,
                             "args": [
                                 {
@@ -686,7 +628,7 @@
                                         "name": null,
                                         "ofType": {
                                             "kind": "INPUT_OBJECT",
-                                            "name": "UpdateProfileElementInput",
+                                            "name": "UpdateUserProfileInput",
                                             "ofType": null
                                         }
                                     },
@@ -695,34 +637,19 @@
                             ],
                             "type": {
                                 "kind": "OBJECT",
-                                "name": "ProfileElement",
+                                "name": "UserProfile",
                                 "ofType": null
                             },
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
-                            "name": "deleteProfileElement",
+                            "name": "deleteUserProfile",
                             "description": null,
-                            "args": [
-                                {
-                                    "name": "input",
-                                    "description": null,
-                                    "type": {
-                                        "kind": "NON_NULL",
-                                        "name": null,
-                                        "ofType": {
-                                            "kind": "INPUT_OBJECT",
-                                            "name": "DeleteProfileElementInput",
-                                            "ofType": null
-                                        }
-                                    },
-                                    "defaultValue": null
-                                }
-                            ],
+                            "args": [],
                             "type": {
                                 "kind": "OBJECT",
-                                "name": "ProfileElement",
+                                "name": "UserProfile",
                                 "ofType": null
                             },
                             "isDeprecated": false,
@@ -736,117 +663,42 @@
                 },
                 {
                     "kind": "INPUT_OBJECT",
-                    "name": "CreateProfileElementInput",
+                    "name": "CreateUserProfileInput",
                     "description": null,
                     "fields": null,
                     "inputFields": [
                         {
-                            "name": "id",
-                            "description": null,
-                            "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "ID",
-                                    "ofType": null
-                                }
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "user",
-                            "description": null,
-                            "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "name",
-                            "description": null,
-                            "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "value",
-                            "description": null,
-                            "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
-                            },
-                            "defaultValue": null
-                        }
-                    ],
-                    "interfaces": null,
-                    "enumValues": null,
-                    "possibleTypes": null
-                },
-                {
-                    "kind": "INPUT_OBJECT",
-                    "name": "UpdateProfileElementInput",
-                    "description": null,
-                    "fields": null,
-                    "inputFields": [
-                        {
-                            "name": "id",
+                            "name": "userId",
                             "description": null,
                             "type": {
                                 "kind": "SCALAR",
-                                "name": "ID",
+                                "name": "String",
                                 "ofType": null
                             },
                             "defaultValue": null
                         },
                         {
-                            "name": "user",
+                            "name": "contentRecommendationFreq",
                             "description": null,
                             "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
                             },
                             "defaultValue": null
                         },
                         {
-                            "name": "name",
+                            "name": "personalDevelopmentFrequency",
                             "description": null,
                             "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
                             },
                             "defaultValue": null
                         },
                         {
-                            "name": "value",
+                            "name": "language",
                             "description": null,
                             "type": {
                                 "kind": "SCALAR",
@@ -862,35 +714,47 @@
                 },
                 {
                     "kind": "INPUT_OBJECT",
-                    "name": "DeleteProfileElementInput",
+                    "name": "UpdateUserProfileInput",
                     "description": null,
                     "fields": null,
                     "inputFields": [
                         {
-                            "name": "user",
+                            "name": "userId",
                             "description": null,
                             "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
                             },
                             "defaultValue": null
                         },
                         {
-                            "name": "name",
+                            "name": "contentRecommendationFreq",
                             "description": null,
                             "type": {
-                                "kind": "NON_NULL",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "personalDevelopmentFrequency",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "language",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
                             },
                             "defaultValue": null
                         }
@@ -905,21 +769,11 @@
                     "description": null,
                     "fields": [
                         {
-                            "name": "onCreateProfileElement",
+                            "name": "onCreateUserProfile",
                             "description": null,
                             "args": [
                                 {
-                                    "name": "id",
-                                    "description": null,
-                                    "type": {
-                                        "kind": "SCALAR",
-                                        "name": "ID",
-                                        "ofType": null
-                                    },
-                                    "defaultValue": null
-                                },
-                                {
-                                    "name": "user",
+                                    "name": "userId",
                                     "description": null,
                                     "type": {
                                         "kind": "SCALAR",
@@ -929,7 +783,7 @@
                                     "defaultValue": null
                                 },
                                 {
-                                    "name": "name",
+                                    "name": "contentRecommendationFreq",
                                     "description": null,
                                     "type": {
                                         "kind": "SCALAR",
@@ -939,7 +793,17 @@
                                     "defaultValue": null
                                 },
                                 {
-                                    "name": "value",
+                                    "name": "personalDevelopmentFrequency",
+                                    "description": null,
+                                    "type": {
+                                        "kind": "SCALAR",
+                                        "name": "String",
+                                        "ofType": null
+                                    },
+                                    "defaultValue": null
+                                },
+                                {
+                                    "name": "language",
                                     "description": null,
                                     "type": {
                                         "kind": "SCALAR",
@@ -951,28 +815,18 @@
                             ],
                             "type": {
                                 "kind": "OBJECT",
-                                "name": "ProfileElement",
+                                "name": "UserProfile",
                                 "ofType": null
                             },
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
-                            "name": "onUpdateProfileElement",
+                            "name": "onUpdateUserProfile",
                             "description": null,
                             "args": [
                                 {
-                                    "name": "id",
-                                    "description": null,
-                                    "type": {
-                                        "kind": "SCALAR",
-                                        "name": "ID",
-                                        "ofType": null
-                                    },
-                                    "defaultValue": null
-                                },
-                                {
-                                    "name": "user",
+                                    "name": "userId",
                                     "description": null,
                                     "type": {
                                         "kind": "SCALAR",
@@ -982,7 +836,7 @@
                                     "defaultValue": null
                                 },
                                 {
-                                    "name": "name",
+                                    "name": "contentRecommendationFreq",
                                     "description": null,
                                     "type": {
                                         "kind": "SCALAR",
@@ -992,7 +846,17 @@
                                     "defaultValue": null
                                 },
                                 {
-                                    "name": "value",
+                                    "name": "personalDevelopmentFrequency",
+                                    "description": null,
+                                    "type": {
+                                        "kind": "SCALAR",
+                                        "name": "String",
+                                        "ofType": null
+                                    },
+                                    "defaultValue": null
+                                },
+                                {
+                                    "name": "language",
                                     "description": null,
                                     "type": {
                                         "kind": "SCALAR",
@@ -1004,28 +868,18 @@
                             ],
                             "type": {
                                 "kind": "OBJECT",
-                                "name": "ProfileElement",
+                                "name": "UserProfile",
                                 "ofType": null
                             },
                             "isDeprecated": false,
                             "deprecationReason": null
                         },
                         {
-                            "name": "onDeleteProfileElement",
+                            "name": "onDeleteUserProfile",
                             "description": null,
                             "args": [
                                 {
-                                    "name": "id",
-                                    "description": null,
-                                    "type": {
-                                        "kind": "SCALAR",
-                                        "name": "ID",
-                                        "ofType": null
-                                    },
-                                    "defaultValue": null
-                                },
-                                {
-                                    "name": "user",
+                                    "name": "userId",
                                     "description": null,
                                     "type": {
                                         "kind": "SCALAR",
@@ -1035,7 +889,7 @@
                                     "defaultValue": null
                                 },
                                 {
-                                    "name": "name",
+                                    "name": "contentRecommendationFreq",
                                     "description": null,
                                     "type": {
                                         "kind": "SCALAR",
@@ -1045,7 +899,17 @@
                                     "defaultValue": null
                                 },
                                 {
-                                    "name": "value",
+                                    "name": "personalDevelopmentFrequency",
+                                    "description": null,
+                                    "type": {
+                                        "kind": "SCALAR",
+                                        "name": "String",
+                                        "ofType": null
+                                    },
+                                    "defaultValue": null
+                                },
+                                {
+                                    "name": "language",
                                     "description": null,
                                     "type": {
                                         "kind": "SCALAR",
@@ -1057,7 +921,7 @@
                             ],
                             "type": {
                                 "kind": "OBJECT",
-                                "name": "ProfileElement",
+                                "name": "UserProfile",
                                 "ofType": null
                             },
                             "isDeprecated": false,
@@ -1071,115 +935,21 @@
                 },
                 {
                     "kind": "INPUT_OBJECT",
-                    "name": "TableFloatFilterInput",
+                    "name": "DeleteUserProfileInput",
                     "description": null,
                     "fields": null,
                     "inputFields": [
                         {
-                            "name": "ne",
+                            "name": "userId",
                             "description": null,
                             "type": {
                                 "kind": "SCALAR",
-                                "name": "Float",
+                                "name": "String",
                                 "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "eq",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "Float",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "le",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "Float",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "lt",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "Float",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "ge",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "Float",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "gt",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "Float",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "contains",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "Float",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "notContains",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "Float",
-                                "ofType": null
-                            },
-                            "defaultValue": null
-                        },
-                        {
-                            "name": "between",
-                            "description": null,
-                            "type": {
-                                "kind": "LIST",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "Float",
-                                    "ofType": null
-                                }
                             },
                             "defaultValue": null
                         }
                     ],
-                    "interfaces": null,
-                    "enumValues": null,
-                    "possibleTypes": null
-                },
-                {
-                    "kind": "SCALAR",
-                    "name": "Float",
-                    "description": "Built-in Float",
-                    "fields": null,
-                    "inputFields": null,
                     "interfaces": null,
                     "enumValues": null,
                     "possibleTypes": null
@@ -1322,6 +1092,236 @@
                                     "name": "Int",
                                     "ofType": null
                                 }
+                            },
+                            "defaultValue": null
+                        }
+                    ],
+                    "interfaces": null,
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TableFloatFilterInput",
+                    "description": null,
+                    "fields": null,
+                    "inputFields": [
+                        {
+                            "name": "ne",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "eq",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "le",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "lt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "ge",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "gt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "contains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "notContains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "Float",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "between",
+                            "description": null,
+                            "type": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "Float",
+                                    "ofType": null
+                                }
+                            },
+                            "defaultValue": null
+                        }
+                    ],
+                    "interfaces": null,
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "SCALAR",
+                    "name": "Float",
+                    "description": "Built-in Float",
+                    "fields": null,
+                    "inputFields": null,
+                    "interfaces": null,
+                    "enumValues": null,
+                    "possibleTypes": null
+                },
+                {
+                    "kind": "INPUT_OBJECT",
+                    "name": "TableIDFilterInput",
+                    "description": null,
+                    "fields": null,
+                    "inputFields": [
+                        {
+                            "name": "ne",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "eq",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "le",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "lt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "ge",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "gt",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "contains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "notContains",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "between",
+                            "description": null,
+                            "type": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "ID",
+                                    "ofType": null
+                                }
+                            },
+                            "defaultValue": null
+                        },
+                        {
+                            "name": "beginsWith",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "ID",
+                                "ofType": null
                             },
                             "defaultValue": null
                         }
@@ -2212,6 +2212,44 @@
                     "onField": true
                 },
                 {
+                    "name": "aws_api_key",
+                    "description": "Tells the service this field/object has access authorized by an API key.",
+                    "locations": [
+                        "OBJECT",
+                        "FIELD_DEFINITION"
+                    ],
+                    "args": [],
+                    "onOperation": false,
+                    "onFragment": false,
+                    "onField": false
+                },
+                {
+                    "name": "aws_publish",
+                    "description": "Tells the service which subscriptions will be published to when this mutation is called. This directive is deprecated use @aws_susbscribe directive instead.",
+                    "locations": [
+                        "FIELD_DEFINITION"
+                    ],
+                    "args": [
+                        {
+                            "name": "subscriptions",
+                            "description": "List of subscriptions which will be published to when this mutation is called.",
+                            "type": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
+                            },
+                            "defaultValue": null
+                        }
+                    ],
+                    "onOperation": false,
+                    "onFragment": false,
+                    "onField": false
+                },
+                {
                     "name": "aws_oidc",
                     "description": "Tells the service this field/object has access authorized by an OIDC token.",
                     "locations": [
@@ -2219,6 +2257,67 @@
                         "FIELD_DEFINITION"
                     ],
                     "args": [],
+                    "onOperation": false,
+                    "onFragment": false,
+                    "onField": false
+                },
+                {
+                    "name": "aws_iam",
+                    "description": "Tells the service this field/object has access authorized by sigv4 signing.",
+                    "locations": [
+                        "OBJECT",
+                        "FIELD_DEFINITION"
+                    ],
+                    "args": [],
+                    "onOperation": false,
+                    "onFragment": false,
+                    "onField": false
+                },
+                {
+                    "name": "deprecated",
+                    "description": null,
+                    "locations": [
+                        "FIELD_DEFINITION",
+                        "ENUM_VALUE"
+                    ],
+                    "args": [
+                        {
+                            "name": "reason",
+                            "description": null,
+                            "type": {
+                                "kind": "SCALAR",
+                                "name": "String",
+                                "ofType": null
+                            },
+                            "defaultValue": "\"No longer supported\""
+                        }
+                    ],
+                    "onOperation": false,
+                    "onFragment": false,
+                    "onField": false
+                },
+                {
+                    "name": "aws_auth",
+                    "description": "Directs the schema to enforce authorization on a field",
+                    "locations": [
+                        "FIELD_DEFINITION"
+                    ],
+                    "args": [
+                        {
+                            "name": "cognito_groups",
+                            "description": "List of cognito user pool groups which have access on this field",
+                            "type": {
+                                "kind": "LIST",
+                                "name": null,
+                                "ofType": {
+                                    "kind": "SCALAR",
+                                    "name": "String",
+                                    "ofType": null
+                                }
+                            },
+                            "defaultValue": null
+                        }
+                    ],
                     "onOperation": false,
                     "onFragment": false,
                     "onField": false
@@ -2272,105 +2371,6 @@
                             "defaultValue": null
                         }
                     ],
-                    "onOperation": false,
-                    "onFragment": false,
-                    "onField": false
-                },
-                {
-                    "name": "aws_auth",
-                    "description": "Directs the schema to enforce authorization on a field",
-                    "locations": [
-                        "FIELD_DEFINITION"
-                    ],
-                    "args": [
-                        {
-                            "name": "cognito_groups",
-                            "description": "List of cognito user pool groups which have access on this field",
-                            "type": {
-                                "kind": "LIST",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
-                            },
-                            "defaultValue": null
-                        }
-                    ],
-                    "onOperation": false,
-                    "onFragment": false,
-                    "onField": false
-                },
-                {
-                    "name": "deprecated",
-                    "description": null,
-                    "locations": [
-                        "FIELD_DEFINITION",
-                        "ENUM_VALUE"
-                    ],
-                    "args": [
-                        {
-                            "name": "reason",
-                            "description": null,
-                            "type": {
-                                "kind": "SCALAR",
-                                "name": "String",
-                                "ofType": null
-                            },
-                            "defaultValue": "\"No longer supported\""
-                        }
-                    ],
-                    "onOperation": false,
-                    "onFragment": false,
-                    "onField": false
-                },
-                {
-                    "name": "aws_iam",
-                    "description": "Tells the service this field/object has access authorized by sigv4 signing.",
-                    "locations": [
-                        "OBJECT",
-                        "FIELD_DEFINITION"
-                    ],
-                    "args": [],
-                    "onOperation": false,
-                    "onFragment": false,
-                    "onField": false
-                },
-                {
-                    "name": "aws_publish",
-                    "description": "Tells the service which subscriptions will be published to when this mutation is called. This directive is deprecated use @aws_susbscribe directive instead.",
-                    "locations": [
-                        "FIELD_DEFINITION"
-                    ],
-                    "args": [
-                        {
-                            "name": "subscriptions",
-                            "description": "List of subscriptions which will be published to when this mutation is called.",
-                            "type": {
-                                "kind": "LIST",
-                                "name": null,
-                                "ofType": {
-                                    "kind": "SCALAR",
-                                    "name": "String",
-                                    "ofType": null
-                                }
-                            },
-                            "defaultValue": null
-                        }
-                    ],
-                    "onOperation": false,
-                    "onFragment": false,
-                    "onField": false
-                },
-                {
-                    "name": "aws_api_key",
-                    "description": "Tells the service this field/object has access authorized by an API key.",
-                    "locations": [
-                        "OBJECT",
-                        "FIELD_DEFINITION"
-                    ],
-                    "args": [],
                     "onOperation": false,
                     "onFragment": false,
                     "onField": false

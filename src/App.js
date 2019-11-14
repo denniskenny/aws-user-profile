@@ -6,19 +6,30 @@ import awsconfig from './aws-exports';
 import { withAuthenticator } from 'aws-amplify-react';
 import { listProfileElements } from './graphql/queries';
 import { createProfileElement } from './graphql/mutations';
-import { Container, Paper, FormGroup, FormControl, InputLabel, Input, FormHelperText, TextField, Button } from '@material-ui/core';
-import { ThemeProvider } from '@material-ui/core/styles';
-
-const theme = {
-  spacing: 4,
-};
+import { CssBaseline, Grid, Container, Paper, FormGroup, 
+          FormControl, InputLabel, Input, FormHelperText, TextField, Button } from '@material-ui/core';
+import { MuiThemeProvider, makeStyles, createMuiTheme} from '@material-ui/core/styles';
 
 Amplify.configure(awsconfig);
+
+const theme = createMuiTheme({
+  spacing : 2,
+  formgroup : { margin : 2}
+});
 
 const profile = {};
 //API.graphql(graphqlOperation(createProfileElement, { input: { id: "27", name: "Padraig", user: "Padraig.OhIceadha@hmhco.com", value: "42" } }));
 
 class App extends PureComponent {
+  
+    fixture = [
+          {id: "3", name: "Discipline", user: "user123", value: "Physics"},
+          {id: "3", name: "Name", user: "user123", value: "User Firstthree"},
+          {id: "1", name: "disc", user: "user123", value: "science"},
+          {id: "1", name: "theme", user: "user123", value: "night"},
+          {id: "1", name: "lang", user: "user234", value: "EN"},
+          {id: "27", name: "Padraig", user: "Padraig.OhIceadha@hmhco.com", value: "42"}];
+
     constructor(props) {
         super(props);
         this.state = { user: { attributes: { email: "" } } };
@@ -40,38 +51,35 @@ class App extends PureComponent {
     }
     
     mapProfile() {
-      
       if(this.state.profileItems){
         console.log('mapping profile')
-        //0: {id: "1", name: "discipline", user: "ea0d96b3-e64e-4908-a5b9-16b44a290466", value: "science"}
-        var formValues = this.state.profileItems.map(field => ({ name: field.name, value: field.value }));
-        console.log(formValues)
+         var formValues = this.state.profileItems.map(field => ({ name: field.name, value: field.value }));
+        return this.fixture;
+        return formValues;
       }
-      return formValues
+        return this.fixture;
     }
-    
     
     InputList(props) {
       const inputs = props.inputs;
       if (typeof inputs !== 'undefined') {
       
         const listItems = inputs.map((input) =>
-          <FormControl key={input.name}>                
-            <InputLabel htmlFor="my-input">{input.name}</InputLabel>
+          <FormControl key={input.name} className="formgroup">                
+            <InputLabel htmlFor={input.name + `-input`}>{input.name}</InputLabel>
             <Input  id={input.name + `-input`} 
                     name={input.name}
                     aria-describedby={input.name + `-helper-text`}
                     value={input.value} 
                     //onchange={this.handleFormChange}
                     />
-            <FormHelperText id="my-helper-text">{input.name} is <em>not</em> editable.</FormHelperText>
+            <FormHelperText id={input.name + `-helper-text`}>{input.name} is <em>not</em> editable.</FormHelperText>
           </FormControl>
         );
         return (
-          <FormGroup>{listItems}</FormGroup>
+          <Grid item xs="8"><FormGroup>{listItems}</FormGroup></Grid>
         );
       }
-      
       return <Paper>No Preferences Stored.</Paper>;
     }
     
@@ -88,51 +96,34 @@ class App extends PureComponent {
     render() {
       const InputList = this.InputList;
       return (
-
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-          </header>
-          
-          <article>
-          <Container>
-            <Paper>
-              <Paper aria-label={`Profile of ` + this.state.user.attributes.email}>{`Profile of ` + this.state.user.attributes.email}</Paper>
-                <Paper>   
-                    <form>
-                      <InputList inputs={this.mapProfile()} />
-                      <FormGroup>
-                        <Button variant="contained" className="primary-variant" onClick={this.saveForm}>Update Profile</Button>
-                      </FormGroup>
-                    </form>
-                </Paper>
+        <MuiThemeProvider theme={theme}>
+        <CssBaseline/>
+        <Paper>
+          <Grid className="App" container spacing={8} direction="row">
+             <Grid item xs="8">
+              <img src={logo} className="App-logo" alt="logo" />
+             </Grid>
+            <Grid item xs="8">
+              <Paper className="Welcome" 
+                      aria-label={`Profile of ` + this.state.user.attributes.email}>
+                {`Profile of ` + this.state.user.attributes.email}
               </Paper>
-           </Container>
-           </article>
-        </div>
+            </Grid>
+            <InputList inputs={this.mapProfile()} />
+            <Grid item xs="8">
+              <FormGroup>
+                <Button variant="contained" className="primary-variant" onClick={this.saveForm}>Update Profile</Button>
+              </FormGroup>
+            </Grid>
+          </Grid>
+        </Paper>
+        </MuiThemeProvider>
     );
 }
 }
 
 
-/*
-[
-0: {id: "1", name: "discipline", user: "ea0d96b3-e64e-4908-a5b9-16b44a290466", value: "science"}
-1: {id: "1", name: "lang", user: "ea0d96b3-e64e-4908-a5b9-16b44a290466", value: "ES"}
-2: {id: "1", name: "theme", user: "ea0d96b3-e64e-4908-a5b9-16b44a290466", value: "day"}
-3: {id: "3", name: "Discipline", user: "user123", value: "Physics"}
-4: {id: "3", name: "Name", user: "user123", value: "User Firstthree"}
-5: {id: "1", name: "disc", user: "user123", value: "science"}
-6: {id: "1", name: "lang", user: "user123", value: "ES"}
-7: {id: "1", name: "theme", user: "user123", value: "night"}
-8: {id: "1", name: "lang", user: "user234", value: "EN"}
-9: {id: "5", name: "Discipline", user: "Padraig.OhIceadha@hmhco.com", value: "Physics"}
-10: {id: "27", name: "Padraig", user: "Padraig.OhIceadha@hmhco.com", value: "42"}
-11: {id: "6", name: "lang", user: "Padraig.OhIceadha@hmhco.com", value: "en-ie"}
-12: {id: "1", name: "theme", user: "user456", value: "night"}
-]
 
-*/
 
 /* Current Schema
 {"data":
@@ -150,25 +141,6 @@ class App extends PureComponent {
   {"id":"1","name":"theme","user":"user456","value":"night"}
 ], "nextToken":null}
 }}
-
-*/
-
-/* Proposed Schema
-types (rich types)
-query{ user: User/class: [Class]/contentRecommendationFreq: ContentRecommendationFreq/PersonalDevelopment/Frequency: PDSFrequency}
-User{userAccount: UserAccount/language: [Language]}
-UserAccount{
-firstName: String!/lastName: String!/userName: String!/email: String!/password: String!}
-Class {classroom: Classroom/ classGrade: String!/ discipline: Discipline}
-Classroom {technologySupported: [ClassroomTechnology]/studentAccessToTech: AccessToTech}
-
-enums (dropdowns)
-Language{English/Spanish}
-ClassroomTechnology{/Projector/School Computer/Printer/Personal Computer}
-AccessToTech{Sometimes/Always/Never}
-Discipline{Maths/Science/Reading}
-ContentRecommendationFreq{Never/Modereate/Often}
-PDSFrequency{Very_Little_Help/Some_Help/A_Lot_Of_Help}
 */
 
 export default withAuthenticator(App, true);

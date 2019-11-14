@@ -1,12 +1,29 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getProfileElement = `query GetProfileElement($name: String!, $user: String!) {
-  getProfileElement(name: $name, user: $user) {
-    id
-    name
-    user
-    value
+export const profileElement = `query ProfileElement {
+  profileElement {
+    userId
+    user {
+      id
+      userId
+      firstName
+      lastName
+      email
+    }
+  }
+}
+`;
+export const getProfileElement = `query GetProfileElement($userId: String!) {
+  getProfileElement(userId: $userId) {
+    userId
+    user {
+      id
+      userId
+      firstName
+      lastName
+      email
+    }
   }
 }
 `;
@@ -17,19 +34,16 @@ export const listProfileElements = `query ListProfileElements(
 ) {
   listProfileElements(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      id
-      name
-      user
-      value
+      userId
+      user {
+        id
+        userId
+        firstName
+        lastName
+        email
+      }
     }
     nextToken
-  }
-}
-`;
-export const singlePost = `query SinglePost($id: ID!) {
-  singlePost(id: $id) {
-    id
-    title
   }
 }
 `;

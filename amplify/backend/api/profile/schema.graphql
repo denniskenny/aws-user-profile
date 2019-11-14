@@ -7,13 +7,7 @@ schema {
 type Mutation {
   createProfileElement(input: CreateProfileElementInput!): ProfileElement
   deleteProfileElement(input: DeleteProfileElementInput!): ProfileElement
-  putPost(id: ID!, title: String!): Post
   updateProfileElement(input: UpdateProfileElementInput!): ProfileElement
-}
-
-type Post {
-  id: ID!
-  title: String!
 }
 
 type ProfileElement {
@@ -21,6 +15,7 @@ type ProfileElement {
   name: String!
   user: String!
   value: String!
+  elephant: String!
 }
 
 type ProfileElementConnection {
@@ -31,7 +26,6 @@ type ProfileElementConnection {
 type Query {
   getProfileElement(name: String!, user: String!): ProfileElement
   listProfileElements(filter: TableProfileElementFilterInput, limit: Int, nextToken: String): ProfileElementConnection
-  singlePost(id: ID!): Post
 }
 
 type Subscription {
