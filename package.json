@@ -10,7 +10,8 @@
     "aws-amplify-react": "^2.5.4",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "theme-ui": "^0.2.46"
   },
   "scripts": {
     "start": "react-scripts start",
