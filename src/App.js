@@ -58,7 +58,12 @@ class App extends PureComponent {
         const listItems = inputs.map((input) =>
           <FormControl key={input.name}>                
             <InputLabel htmlFor="my-input">{input.name}</InputLabel>
-            <Input id="my-input" aria-describedby="my-helper-text" value={input.value}/>
+            <Input  id={input.name + `-input`} 
+                    name={input.name}
+                    aria-describedby={input.name + `-helper-text`}
+                    value={input.value} 
+                    //onchange={this.handleFormChange}
+                    />
             <FormHelperText id="my-helper-text">{input.name} is <em>not</em> editable.</FormHelperText>
           </FormControl>
         );
@@ -68,6 +73,12 @@ class App extends PureComponent {
       }
       
       return <Paper>No Preferences Stored.</Paper>;
+    }
+    
+    handleFormChange(event){
+       if (typeof event !== 'undefined') {
+        this.setState({password: event.target.value});
+       }
     }
     
     saveForm(){
@@ -82,17 +93,20 @@ class App extends PureComponent {
           <header className="App-header">
             <img src={logo} className="App-logo" alt="logo" />
           </header>
+          
           <article>
           <Container>
             <Paper>
               <Paper aria-label={`Profile of ` + this.state.user.attributes.email}>{`Profile of ` + this.state.user.attributes.email}</Paper>
-                  <form>
-                    <InputList inputs={this.mapProfile()} />
-                    <FormGroup>
-                      <Button variant="contained" className="primary-variant" onClick={this.saveForm}>Update Profile</Button>
-                    </FormGroup>
-                  </form>
-               </Paper>
+                <Paper>   
+                    <form>
+                      <InputList inputs={this.mapProfile()} />
+                      <FormGroup>
+                        <Button variant="contained" className="primary-variant" onClick={this.saveForm}>Update Profile</Button>
+                      </FormGroup>
+                    </form>
+                </Paper>
+              </Paper>
            </Container>
            </article>
         </div>
