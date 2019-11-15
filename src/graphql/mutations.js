@@ -1,42 +1,51 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createProfileElement = `mutation CreateProfileElement($input: CreateProfileElementInput!) {
-  createProfileElement(input: $input) {
+export const createUserProfileElement = `mutation CreateUserProfileElement($input: CreateUserProfileElementInput!) {
+  createUserProfileElement(input: $input) {
     userId
-    user {
+    userAccountInfo {
       id
       userId
       firstName
       lastName
       email
     }
+    contentRecommendationFreq
+    personalDevelopmentFrequency
+    language
   }
 }
 `;
-export const updateProfileElement = `mutation UpdateProfileElement($input: UpdateProfileElementInput!) {
-  updateProfileElement(input: $input) {
+export const updateUserProfileElement = `mutation UpdateUserProfileElement($input: UpdateUserProfileElementInput!) {
+  updateUserProfileElement(input: $input) {
     userId
-    user {
+    userAccountInfo {
       id
       userId
       firstName
       lastName
       email
     }
+    contentRecommendationFreq
+    personalDevelopmentFrequency
+    language
   }
 }
 `;
-export const deleteProfileElement = `mutation DeleteProfileElement($input: DeleteProfileElementInput!) {
-  deleteProfileElement(input: $input) {
+export const deleteUserProfileElement = `mutation DeleteUserProfileElement {
+  deleteUserProfileElement {
     userId
-    user {
+    userAccountInfo {
       id
       userId
       firstName
       lastName
       email
     }
+    contentRecommendationFreq
+    personalDevelopmentFrequency
+    language
   }
 }
 `;

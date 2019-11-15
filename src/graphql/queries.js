@@ -1,47 +1,60 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const profileElement = `query ProfileElement {
-  profileElement {
+export const userProfileElement = `query UserProfileElement {
+  userProfileElement {
     userId
-    user {
+    userAccountInfo {
       id
       userId
       firstName
       lastName
       email
     }
+    contentRecommendationFreq
+    personalDevelopmentFrequency
+    language
   }
 }
 `;
-export const getProfileElement = `query GetProfileElement($userId: String!) {
-  getProfileElement(userId: $userId) {
+export const getUserProfileElement = `query GetUserProfileElement {
+  getUserProfileElement {
     userId
-    user {
+    userAccountInfo {
       id
       userId
       firstName
       lastName
       email
     }
+    contentRecommendationFreq
+    personalDevelopmentFrequency
+    language
   }
 }
 `;
-export const listProfileElements = `query ListProfileElements(
-  $filter: TableProfileElementFilterInput
+export const listUserProfileElements = `query ListUserProfileElements(
+  $filter: TableUserProfileElementFilterInput
   $limit: Int
   $nextToken: String
 ) {
-  listProfileElements(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listUserProfileElements(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
     items {
       userId
-      user {
+      userAccountInfo {
         id
         userId
         firstName
         lastName
         email
       }
+      contentRecommendationFreq
+      personalDevelopmentFrequency
+      language
     }
     nextToken
   }

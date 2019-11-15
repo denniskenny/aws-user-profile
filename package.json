@@ -9,6 +9,7 @@
     "aws-amplify": "^1.2.4",
     "aws-amplify-react": "^2.5.4",
     "flat": "^5.0.0",
+    "lodash": "^4.17.15",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",

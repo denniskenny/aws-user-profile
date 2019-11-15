@@ -1,42 +1,81 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateProfileElement = `subscription OnCreateProfileElement($userId: String) {
-  onCreateProfileElement(userId: $userId) {
+export const onCreateUserProfileElement = `subscription OnCreateUserProfileElement(
+  $userId: String
+  $contentRecommendationFreq: String
+  $personalDevelopmentFrequency: String
+  $language: String
+) {
+  onCreateUserProfileElement(
+    userId: $userId
+    contentRecommendationFreq: $contentRecommendationFreq
+    personalDevelopmentFrequency: $personalDevelopmentFrequency
+    language: $language
+  ) {
     userId
-    user {
+    userAccountInfo {
       id
       userId
       firstName
       lastName
       email
     }
+    contentRecommendationFreq
+    personalDevelopmentFrequency
+    language
   }
 }
 `;
-export const onUpdateProfileElement = `subscription OnUpdateProfileElement($userId: String) {
-  onUpdateProfileElement(userId: $userId) {
+export const onUpdateUserProfileElement = `subscription OnUpdateUserProfileElement(
+  $userId: String
+  $contentRecommendationFreq: String
+  $personalDevelopmentFrequency: String
+  $language: String
+) {
+  onUpdateUserProfileElement(
+    userId: $userId
+    contentRecommendationFreq: $contentRecommendationFreq
+    personalDevelopmentFrequency: $personalDevelopmentFrequency
+    language: $language
+  ) {
     userId
-    user {
+    userAccountInfo {
       id
       userId
       firstName
       lastName
       email
     }
+    contentRecommendationFreq
+    personalDevelopmentFrequency
+    language
   }
 }
 `;
-export const onDeleteProfileElement = `subscription OnDeleteProfileElement($userId: String) {
-  onDeleteProfileElement(userId: $userId) {
+export const onDeleteUserProfileElement = `subscription OnDeleteUserProfileElement(
+  $userId: String
+  $contentRecommendationFreq: String
+  $personalDevelopmentFrequency: String
+  $language: String
+) {
+  onDeleteUserProfileElement(
+    userId: $userId
+    contentRecommendationFreq: $contentRecommendationFreq
+    personalDevelopmentFrequency: $personalDevelopmentFrequency
+    language: $language
+  ) {
     userId
-    user {
+    userAccountInfo {
       id
       userId
       firstName
       lastName
       email
     }
+    contentRecommendationFreq
+    personalDevelopmentFrequency
+    language
   }
 }
 `;
